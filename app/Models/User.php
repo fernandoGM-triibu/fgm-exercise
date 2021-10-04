@@ -7,6 +7,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use App\Models\Country;
+use App\Models\City;
+use App\Models\Gender;
 
 class User extends Authenticatable
 {
@@ -41,4 +44,23 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function country()
+    {
+        return $this->belongsTo(Country::class, 'id_country', 'id_country');
+
+    }
+
+    public function city()
+    {
+        return $this->belongsTo(City::class, 'id_city', 'id_city');
+
+    }
+
+    public function gender()
+    {
+        return $this->belongsTo(Gender::class, 'id_gen', 'id_gender');
+
+    }
+
 }
